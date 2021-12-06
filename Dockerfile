@@ -22,7 +22,7 @@ WORKDIR /data
 EXPOSE 25565
 
 ENV MEMORY=1G \
-    TYPE=PAPER \
+    TYPE=VANLLA \
     VERSION=1.18
 
 COPY scripts/ /scripts/
