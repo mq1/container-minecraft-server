@@ -26,7 +26,7 @@ ENV MEMORY=1G \
     VERSION=1.18
 
 COPY scripts/ /scripts/
-
 RUN chmod +x /scripts/*
+
 USER 1000:1000
 ENTRYPOINT ["/scripts/start.sh"]
