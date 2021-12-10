@@ -2,4 +2,4 @@
 
 echo "eula=${EULA}" > eula.txt
 
-[ "$TYPE" == "PAPER" ] && /scripts/paper.sh
+[ "$TYPE" = "PAPER" ] && /scripts/paper.sh
