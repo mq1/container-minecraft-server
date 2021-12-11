@@ -23,7 +23,7 @@ EXPOSE 25565
 
 ENV MEMORY=1G \
     TYPE=VANLLA \
-    VERSION=1.18
+    VERSION=1.18.1
 
 COPY scripts/ /scripts/
 RUN chmod +x /scripts/*
