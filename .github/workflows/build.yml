@@ -30,7 +30,7 @@ jobs:
           tags: latest ${{ github.sha }}
           archs: amd64, arm64
           containerfiles: |
-            ./Containerfile
+            ./Dockerfile
           oci: true
 
       # Push the image to GHCR (Image Registry)
