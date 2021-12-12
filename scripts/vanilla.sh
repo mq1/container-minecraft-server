@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo Downloading vanilla server
+
+[ "$VERSION" = LATEST ] && VERSION=$(wget -qO- "https://launchermeta.mojang.com/mc/game/version_manifest.json" | jq -r '.latest.release')
+
 versionManifestUrl=$(wget -qO- 'https://launchermeta.mojang.com/mc/game/version_manifest.json' | jq --arg VERSION "$VERSION" -r '.versions[] | select(.id == $VERSION).url')
 serverDownloadUrl=$(wget -qO- "$versionManifestUrl" | jq -r '.downloads.server.url' )
 server="minecraft_server.${VERSION}.jar"

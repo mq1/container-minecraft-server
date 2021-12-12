@@ -3,7 +3,7 @@ FROM alpine:3.15
 LABEL org.opencontainers.image.authors="Manuel Quarneti <manuelquarneti@gmail.com>"
 
 # Install packages
-RUN apk add --no-cache openjdk17-jre-headless jq libxml2-utils
+RUN apk add --no-cache openjdk17-jre-headless jq
 
 # Remove apk
 RUN rm -f /sbin/apk && \
@@ -23,7 +23,7 @@ EXPOSE 25565
 
 ENV MEMORY=1G \
     TYPE=VANLLA \
-    VERSION=1.18.1
+    VERSION=LATEST
 
 COPY scripts/ /scripts/
 RUN chmod +x /scripts/*

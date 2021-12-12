@@ -2,6 +2,8 @@
 
 echo Downloading paper
 
+[ "$VERSION" = LATEST ] && VERSION=$(wget -qO- "https://papermc.io/api/v2/projects/paper" | jq -r '.versions[-1]')
+
 build=$(wget -qO- "https://papermc.io/api/v2/projects/paper/versions/${VERSION}" | jq '.builds[-1]')
 server=$(wget -qO- "https://papermc.io/api/v2/projects/paper/versions/${VERSION}/builds/${build}" | jq -r '.downloads.application.name')
 
