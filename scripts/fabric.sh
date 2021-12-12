@@ -2,9 +2,7 @@
 
 echo Downloading fabric
 
-versions=$(wget -qO- "https://maven.fabricmc.net/net/fabricmc/fabric-installer/maven-metadata.xml")
-latestVersion=$(echo "$versions" | xmllint --xpath 'string(/metadata/versioning/release)' -)
-
+latestVersion=$(wget -qO- "https://maven.fabricmc.net/net/fabricmc/fabric-installer/maven-metadata.xml" | xmllint --xpath 'string(/metadata/versioning/release)' -)
 fabricInstaller="fabric-installer-${latestVersion}.jar"
 fabricInstallerUrl="https://maven.fabricmc.net/net/fabricmc/fabric-installer/${latestVersion}/${fabricInstaller}"
 
