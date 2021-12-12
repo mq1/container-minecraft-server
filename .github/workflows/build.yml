@@ -30,12 +30,12 @@ jobs:
           tags: latest ${{ github.sha }}
           archs: amd64, arm64
           containerfiles: |
-            ./Dockerfile
+            ./Containerfile
           oci: true
 
       # Push the image to GHCR (Image Registry)
       - name: Push To GHCR
-        uses: ./
+        uses: redhat-actions/push-to-registry@v2
         id: push
         with:
           image: ${{ steps.build_image.outputs.image }}
