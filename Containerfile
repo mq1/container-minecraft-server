@@ -3,7 +3,7 @@ FROM alpine:3.15
 LABEL org.opencontainers.image.authors="Manuel Quarneti <manuelquarneti@gmail.com>"
 
 # Install packages
-RUN apk add --no-cache openjdk17-jre-headless jq dasel
+RUN apk add --no-cache openjdk17-jre-headless jq libxml2-utils
 
 # Remove apk
 RUN rm -f /sbin/apk && \
