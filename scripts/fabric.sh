@@ -10,7 +10,7 @@ installerVersion=$(wget -qO- "https://meta.fabricmc.net/v2/versions/installer" |
 server="fabric-server-mc.${VERSION}-loader.${loaderVersion}-launcher.${installerVersion}.jar"
 
 # Download the fabric installer jar
-wget -O "$server" "https://meta.fabricmc.net/v2/versions/loader/${VERSION}/${loaderVersion}/${installerVersion}/server/jar"
+[ -f "$server" ] || wget -O "$server" "https://meta.fabricmc.net/v2/versions/loader/${VERSION}/${loaderVersion}/${installerVersion}/server/jar"
 
 # Remove old versions
 for f in fabric-server-mc.*-loader.*-launcher.*.jar; do
