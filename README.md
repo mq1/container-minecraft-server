@@ -7,12 +7,12 @@ A KISS minecraft server container image inspired by [itzg/docker-minecraft-serve
 ```sh
 podman run -d -it --rm \
     --restart unless-stopped \
-    --userns keep-id \
+    --user 1000:0 \
     --label io.containers.autoupdate=image \
     -p 25565:25565 \
     -e EULA=TRUE \
     -e MEMORY=1G \
-    -e TYPE=VANILLA
+    -e TYPE=VANILLA \
     -e VERSION=LATEST \
     -v path/to/minecraft/data:/data \
     --name mc \
@@ -23,8 +23,8 @@ Setting up autostart with systemd
 
 ```sh
 podman generate systemd --new --files --name mc
-mkdir -p .config/systemd/user
-mv container-mc.service .config/systemd/user
+mkdir -p ~/.config/systemd/user
+mv container-mc.service ~/.config/systemd/user
 podman container stop mc
 systemctl --user enable --now container-mc.service
 ```
@@ -33,8 +33,6 @@ systemctl --user enable --now container-mc.service
 
 Parameter | Function | Default
 --- | --- | ---
---userns=keep-id | use uid 1000 and guid 1000 (TODO support other ids) |
--p 25565:25565 | tcp connection port |
 -e EULA=TRUE | The minecraft server EULA [TRUE\|FALSE] | FALSE
 -e MEMORY | The RAM allocated to the server | 1G
 -e TYPE | The server implementation [VANILLA\|PAPER\|FABRIC] | VANILLA
