@@ -6,15 +6,16 @@ A KISS minecraft server container image inspired by [itzg/docker-minecraft-serve
 
 ```sh
 podman run -d -it --rm \
-    --restart=unless-stopped \
-    --userns=keep-id \
+    --restart unless-stopped \
+    --userns keep-id \
+    --label io.containers.autoupdate=image \
     -p 25565:25565 \
     -e EULA=TRUE \
     -e MEMORY=1G \
     -e TYPE=VANILLA
     -e VERSION=LATEST \
     -v path/to/minecraft/data:/data \
-    --name=mc \
+    --name mc \
     ghcr.io/mq1/container-minecraft-server:latest
 ```
 
