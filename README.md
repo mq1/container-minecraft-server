@@ -2,4 +2,32 @@
 
 A KISS minecraft server container image inspired by [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server)
 
+## Usage
+
+```sh
+podman run -d -it \
+    --restart=unless-stopped \
+    --userns=keep-id \
+    -p 25565:25565 \
+    -e EULA=TRUE \
+    -e MEMORY=1G \
+    -e TYPE=VANILLA
+    -e VERSION=LATEST \
+    -v path/to/minecraft/data:/data \
+    --name=mc \
+    ghcr.io/mq1/container-minecraft-server:latest
+```
+
+## Parameters
+
+Parameter | Function | Default
+--- | --- | ---
+--userns=keep-id | use uid 1000 and guid 1000 (TODO support other ids) |
+-p 25565:25565 | tcp connection port |
+-e EULA=TRUE | The minecraft server EULA [TRUE\|FALSE] | FALSE
+-e MEMORY | The RAM allocated to the server | 1G
+-e TYPE | The server implementation [VANILLA\|PAPER\|FABRIC] | VANILLA
+-e VERSION | The Minecraft version [LATEST\|1.X.X] | LATEST
+-v /data | Minecraft data location |
+
 © 2021 Manuel Quarneti
