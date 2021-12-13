@@ -4,18 +4,18 @@ echo Downloading fabric
 
 [ "$VERSION" = LATEST ] && VERSION=$(wget -qO- "https://meta.fabricmc.net/v2/versions/game" | jq -r '[.[] | select(.stable == true).version][0]')
 
-latestVersion=$(wget -qO- "https://meta.fabricmc.net/v2/versions/installer" | jq -r .[0].version)
-fabricInstaller="fabric-installer-${latestVersion}.jar"
-fabricInstallerUrl="https://maven.fabricmc.net/net/fabricmc/fabric-installer/${latestVersion}/${fabricInstaller}"
+loaderVersion=$(wget -qO- "https://meta.fabricmc.net/v2/versions/loader/${VERSION}" | jq -r '.[] | select(.loader.stable == true).loader.version')
+installerVersion=$(wget -qO- "https://meta.fabricmc.net/v2/versions/installer" | jq -r .[0].version)
+
+server="fabric-server-mc.${VERSION}-loader.${loaderVersion}-launcher.${installerVersion}.jar"
 
 # Download the fabric installer jar
-wget -O "$fabricInstaller" "$fabricInstallerUrl"
+wget -O "$server" "https://meta.fabricmc.net/v2/versions/loader/${VERSION}/${loaderVersion}/${installerVersion}/server/jar"
 
-# Run the installer
-java -jar "$fabricInstaller" server -mcversion "$VERSION" -downloadMinecraft
+# Remove old versions
+for f in fabric-server-mc.*-loader.*-launcher.*.jar; do
+    [ "$f" != "$server" ] && rm "$f"
+done
 
-# Delete the installer
-rm "$fabricInstaller"
-
-# Launch fabric-server-launch.jar
-/scripts/launch.sh fabric-server-launch.jar
+# Launch server jar
+/scripts/launch.sh "$server"
