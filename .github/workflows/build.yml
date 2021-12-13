@@ -43,8 +43,6 @@ jobs:
           registry: ghcr.io/${{ github.repository_owner }}
           username: ${{ github.actor }}
           password: ${{ github.token }}
-          extra-args: |
-            --disable-content-trust
 
       - name: Echo outputs
         run: |
