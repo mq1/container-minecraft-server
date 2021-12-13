@@ -13,7 +13,7 @@ How do I setup podman? Read [this](https://github.com/containers/podman/blob/mai
 ```sh
 podman run -d -it \
     --restart unless-stopped \
-    --user 1000:0 \
+    --userns keep-id \
     --label io.containers.autoupdate=image \
     -p 25565:25565 \
     -e EULA=TRUE \
