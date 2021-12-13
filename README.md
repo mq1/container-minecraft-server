@@ -4,6 +4,10 @@ A KISS minecraft server container image inspired by [itzg/docker-minecraft-serve
 
 ## Usage
 
+How do I setup podman? Read [this](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md)
+
+### Running the image
+
 ```sh
 podman run -d -it --rm \
     --restart unless-stopped \
@@ -19,7 +23,7 @@ podman run -d -it --rm \
     ghcr.io/mq1/container-minecraft-server:latest
 ```
 
-Setting up autostart with systemd
+### Setting up autostart with systemd
 
 ```sh
 podman generate systemd --new --files --name mc
