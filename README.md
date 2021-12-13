@@ -5,7 +5,7 @@ A KISS minecraft server container image inspired by [itzg/docker-minecraft-serve
 ## Usage
 
 ```sh
-podman run -d -it \
+podman run -d -it --rm \
     --restart=unless-stopped \
     --userns=keep-id \
     -p 25565:25565 \
@@ -16,6 +16,16 @@ podman run -d -it \
     -v path/to/minecraft/data:/data \
     --name=mc \
     ghcr.io/mq1/container-minecraft-server:latest
+```
+
+Setting up autostart with systemd
+
+```sh
+podman generate systemd --new --files --name mc
+mkdir -p .config/systemd/user
+mv container-mc.service .config/systemd/user
+podman container stop mc
+systemctl --user enable --now container-mc.service
 ```
 
 ## Parameters
