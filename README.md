@@ -13,7 +13,7 @@ How do I setup podman? Read [this](https://github.com/containers/podman/blob/mai
 ```sh
 podman run -d -it \
     --restart unless-stopped \
-    --userns keep-id \
+    -u 1000:1000 \
     --label io.containers.autoupdate=image \
     -p 25565:25565 \
     -e EULA=TRUE \
@@ -39,6 +39,7 @@ systemctl --user enable --now container-mc.service
 
 Parameter | Function | Default
 --- | --- | ---
+-u 1000:1000 | The user and group | 1000:1000
 -e EULA=TRUE | The minecraft server EULA [TRUE\|FALSE] | FALSE
 -e MEMORY | The RAM allocated to the server | 1G
 -e TYPE | The server implementation [VANILLA\|PAPER\|FABRIC] | VANILLA

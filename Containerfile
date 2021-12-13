@@ -12,10 +12,6 @@ RUN rm -f /sbin/apk && \
     rm -rf /usr/share/apk && \
     rm -rf /var/lib/apk
 
-# Add user and group
-RUN addgroup --gid 1000 minecraft && \
-    adduser --system --shell /bin/false --uid 1000 --ingroup minecraft --home /data minecraft
-
 VOLUME ["/data"]
 WORKDIR /data
 
