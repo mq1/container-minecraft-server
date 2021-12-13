@@ -2,6 +2,8 @@
 
 A KISS minecraft server container image inspired by [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server)
 
+Available architectures: amd64, arm64
+
 ## Usage
 
 How do I setup podman? Read [this](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md)
