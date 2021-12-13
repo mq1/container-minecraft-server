@@ -11,7 +11,7 @@ How do I setup podman? Read [this](https://github.com/containers/podman/blob/mai
 ### Running the image
 
 ```sh
-podman run -d -it --rm \
+podman run -d -it \
     --restart unless-stopped \
     --user 1000:0 \
     --label io.containers.autoupdate=image \
@@ -31,7 +31,7 @@ podman run -d -it --rm \
 podman generate systemd --new --files --name mc
 mkdir -p ~/.config/systemd/user
 mv container-mc.service ~/.config/systemd/user
-podman container stop mc
+podman container stop mc && podman container rm mc
 systemctl --user enable --now container-mc.service
 ```
 
