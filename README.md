@@ -41,10 +41,10 @@ systemctl --user enable --now container-mc.service
 Parameter | Function | Default
 --- | --- | ---
 -u 1000:1000 | The user and group | 1000:1000
--e EULA=TRUE | The minecraft server EULA [TRUE\|FALSE] | FALSE
+-e EULA=TRUE | The minecraft server EULA `[TRUE\|FALSE]` | FALSE
 -e MEMORY | The RAM allocated to the server | 1G
--e TYPE | The server implementation [VANILLA\|PAPER\|FABRIC] | VANILLA
--e VERSION | The Minecraft version [LATEST\|1.X.X] | LATEST
+-e TYPE | The server implementation `[VANILLA\|PAPER\|FABRIC]` | VANILLA
+-e VERSION | The Minecraft version `[LATEST\|1.X.X]` | LATEST
 -v /data | Minecraft data location |
 
 © 2021 Manuel Quarneti
