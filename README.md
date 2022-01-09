@@ -1,4 +1,4 @@
-# container-minecraft-server [WIP]
+# container-minecraft-server
 
 A KISS minecraft server container image inspired by [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server)
 
