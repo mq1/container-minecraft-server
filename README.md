@@ -29,6 +29,8 @@ podman run -d -it \
 ### Setting up autostart with systemd
 
 ```sh
+loginctl enable-linger <username>
+
 podman generate systemd --new --files --name mc
 mkdir -p ~/.config/systemd/user
 mv container-mc.service ~/.config/systemd/user
