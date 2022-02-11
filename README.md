@@ -12,17 +12,18 @@ How do I setup podman? Read [this](https://github.com/containers/podman/blob/mai
 
 ```sh
 podman run -d -it \
+    --name mc \
     --restart unless-stopped \
     --userns keep-id \
-    -u 1000:1000 \
     --label io.containers.autoupdate=image \
+    --net slirp4netns:port_handler=slirp4netns \
+    -u 1000:1000 \
     -p 25565:25565 \
+    -v path/to/minecraft/data:/data \
     -e EULA=TRUE \
     -e MEMORY=1G \
     -e TYPE=VANILLA \
     -e VERSION=LATEST \
-    -v path/to/minecraft/data:/data \
-    --name mc \
     ghcr.io/mq1/container-minecraft-server:latest
 ```
 
